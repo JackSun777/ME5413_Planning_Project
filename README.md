@@ -2,7 +2,7 @@
 
 NUS ME5413 Autonomous Mobile Robotics Planning Project
 
-> Authors: [Ziggy](https://github.com/ziggyhuang) and [Shuo](https://github.com/SS47816)
+> Authors: [Ziggy](https://github.com/ziggyhuang) and [Shuo](https://github.com/SS47816), and Group 31
 
 ![Ubuntu 20.04](https://img.shields.io/badge/OS-Ubuntu_20.04-informational?style=flat&logo=ubuntu&logoColor=white&color=2bbc8a)
 ![ROS Noetic](https://img.shields.io/badge/Tools-ROS_Noetic-informational?style=flat&logo=ROS&logoColor=white&color=2bbc8a)
@@ -91,19 +91,16 @@ roslaunch me5413_world path_tracking.launch
 
 - Control your robot to follow the given **figure 8** track.
 
-  - You may use any algorithms you like.
-  - Implement your algorithms in the `src/me5413_world/include/me5413_world/path_tracker_node.hpp` and `src/me5413_world/src/path_tracker_node.cpp`, to replace our template code.
-  - Test your algorithms on the track & Report your tracking accuracy.
+  - We are using Pure Pursuit.
+  - The algorism is implemented in `src/me5413_world/include/me5413_world/path_tracker_node.hpp` and `src/me5413_world/src/path_tracker_node.cpp`, and `src/me5413_world/cfg/path_tracker.cfg`.
+  - The errors are small at first but would become larger.
 
-- In the template code, we have provided you:
+- We have provided you two variables to control:
 
-  - A dumb **PID** controller for the throttle.
-  - A weird **Stanley** controller for the steering.
-  - However, both are not properly configured or tuned.
+  - Velocity.
+  - Lookahead distance.
 
-- We have provided you a dynamic reconfigure GUI that allows you to tune some of the parameters:
-
-  ![rqt_reconfig_image](src/me5413_world/media/rqt_reconfig.png)
+- We have provided you a dynamic reconfigure GUI that allows you to tune these parameters.
 
 - We also provides you six topics (and visualized in RVIZ) that computes the real-time errors between your robot and the tracking path:
   - `/me5413_world/planning/abs_position_error` ([m], `std_msgs::Float32`)
